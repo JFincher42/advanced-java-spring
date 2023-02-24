@@ -17,4 +17,14 @@ public class LaptopConfiguration {
     public OS os() {
         return new OS("ubuntu");
     }
+
+    @Bean
+    public WebCam webcam(){
+        return new WebCam("Integrated", 1024, 768);
+    }
+
+    @Bean
+    public HardDrive hd(){
+        return new HardDrive("Western Digital", 1024, false);
+    }
 }
