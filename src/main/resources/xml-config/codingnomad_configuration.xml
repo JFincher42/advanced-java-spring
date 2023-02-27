@@ -19,4 +19,11 @@
         <property name="version" value="11"/>
     </bean>
 
+    <!-- My New Class -->
+    <bean id="kbd" class="platform.codingnomads.co.corespring.examples.application_context.xml.Keyboard">
+        <property name="name" value="ErgoDox"/>
+        <property name="type" value="Split"/>
+        <property name="switches" value="Cherry Brown"/>
+    </bean>
+
 </beans>
