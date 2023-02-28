@@ -9,6 +9,9 @@ public class BeanAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(BeanAnnotationConfig.class);
         ctx.refresh();
+
+        // You don't even need this for this exercise -- all the work is in
+        // the bean when the context creates them.
         SampleBean sampleBean = ctx.getBean("friendly_bean_name", SampleBean.class);
         ctx.close();
     }

@@ -10,13 +10,23 @@ public class SampleBean {
     }
 
     @PostConstruct
+    public void xxxInitHook2(){
+        System.out.println("secon @PostConstruct method in action...");
+    }
+
+    @PostConstruct
     public void init() {
         System.out.println("bean @PostConstruct is gathering resources..");
     }
+
 
     @PreDestroy
     public void cleanup() {
         System.out.println("time to @PreDestroy and head home..");
     }
 
+    @PreDestroy
+    public void destroyHook2(){
+        System.out.println("second @PreDestroy method in action ");
+    }
 }
