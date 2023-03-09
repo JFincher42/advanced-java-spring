@@ -18,6 +18,9 @@ public class Nomad {
         this.age = age;
     }
 
+    @Value("${nomad.mood}")
+    private String mood;
+
     @Value("Hello!!")
     private String greeting;
 
@@ -55,4 +58,9 @@ public class Nomad {
     public Map<String, String> getDatabaseValues() {
         return databaseValues;
     }
+
+    public String getMood() {
+        return mood;
+    }
 }
+
