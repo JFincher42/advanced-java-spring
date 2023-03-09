@@ -10,6 +10,8 @@ import platform.codingnomads.co.springdata.example.jpa.repositories.CodeWarriorR
 import platform.codingnomads.co.springdata.example.jpa.repositories.UserDetailRepository;
 import platform.codingnomads.co.springdata.example.jpa.repositories.UserRepository;
 
+import java.util.Optional;
+
 @SpringBootApplication
 @EnableJpaRepositories("platform.codingnomads.co.springdata.example.jpa.repositories")
 @RequiredArgsConstructor
@@ -50,7 +52,7 @@ public class JPADomainDemo implements CommandLineRunner {
         userRepository.save(user);
 
         userRepository.findAll().forEach(u -> System.out.println(u.getName()));
-
+        Optional<User> u1 = userRepository.findById(4l);
 
         /*Bidirectional One To Many */
 

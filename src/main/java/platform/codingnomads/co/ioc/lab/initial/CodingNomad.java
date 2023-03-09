@@ -2,6 +2,7 @@ package platform.codingnomads.co.ioc.lab.initial;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.text.MessageFormat;
@@ -13,6 +14,9 @@ public class CodingNomad {
     private final JDK jdk;
     private final IDE ide;
     private final Framework framework;
+
+    @Value("${nomad.framework}")
+    public String jonProp;
 
     // Setting injection
     private Keyboard kbd;

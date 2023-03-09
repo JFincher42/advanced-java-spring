@@ -18,6 +18,7 @@ public class CodingNomad {
     private final Framework framework;
 
     // notice the SoundSystem is not private final - we'll need setter or field injection on this
+    // Or @Autowire this for field injection
     private SoundSystem soundSystem;
 
     // setter injection of the SoundSystem

@@ -1,6 +1,7 @@
 package platform.codingnomads.co.ioc.lab.initial;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 public class CodingNomadDemo {
+
 
     public static void main(String[] args) {
         // ctx is created by picking a Configuration object
@@ -38,6 +40,7 @@ public class CodingNomadDemo {
 
         CodingNomad codingNomad = ctx.getBean(CodingNomad.class);
 
+        System.out.println(codingNomad.jonProp);
         System.out.println(codingNomad.createAwesomeSoftware());
     }
 }

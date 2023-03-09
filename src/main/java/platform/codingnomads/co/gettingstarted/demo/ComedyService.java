@@ -1,5 +1,6 @@
 package platform.codingnomads.co.gettingstarted.demo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import java.util.Random;
 
@@ -9,6 +10,9 @@ public class ComedyService {
 
     // declare a simple String array of length 10
     private String[] jokes = new String[10];
+
+    @Value("${jon.property}")
+    public String jonProp;
 
     // simple constructor that invokes the populateJokes() method
     public ComedyService(){
@@ -20,6 +24,7 @@ public class ComedyService {
     protected String getRandomJoke(){
         Random r = new Random();
         int i = r.nextInt(10);
+        System.out.println(jonProp);
         return jokes[i];
     }
 
