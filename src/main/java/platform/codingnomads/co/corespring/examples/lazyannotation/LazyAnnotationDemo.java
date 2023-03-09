@@ -7,6 +7,7 @@ public class LazyAnnotationDemo {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(LazyAnnotationDemoConfiguration.class);
         ctx.refresh();
+        System.out.println("Starting...");
         ctx.start();
         ctx.getBean(LazyBean.class);
         ctx.close();
