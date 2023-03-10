@@ -13,6 +13,12 @@ public class DependsOnDemoConfig {
         return new SpringDeveloper();
     }
 
+    @Bean
+    @DependsOn(value = "jdk")
+    public IDE devEnv(){
+        return new IDE();
+    }
+
     @Bean("jdk")
     public JDK jdk() {
         return new JDK();

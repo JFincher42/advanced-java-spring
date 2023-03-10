@@ -9,6 +9,7 @@ public class ImportAnnotationDemo {
         ctx.refresh();
         final SpringDeveloper springDeveloper = ctx.getBean(SpringDeveloper.class);
         final Framework framework = ctx.getBean(Framework.class);
+        final Framework fw2 = ctx.getBean(Framework.class);
         ctx.close();
     }
 }

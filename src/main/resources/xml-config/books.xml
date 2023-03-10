@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cultureNovel" name="cultureNovel" class="platform.codingnomads.co.corespring.lab.Book">
+        <property name="title" value="Use of Weapons"/>
+        <property name="author" value="Iain M. Banks"/>
+        <property name="type" value="fiction"/>
+    </bean>
+
+    <bean id="compilerTextbook" name="compilerTextBook" class="platform.codingnomads.co.corespring.lab.Book">
+        <property name="title" value="Compiler Design in C"/>
+        <property name="author" value="Allan Holub"/>
+        <property name="type" value="textbook"/>
+    </bean>
+
+</beans>

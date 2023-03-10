@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@Import(SimpleConfiguration.class)
+@Import({SimpleConfiguration.class, YAConfigClass.class})
 public class ImportAnnotationConfig {
-    @Bean
-    public Framework framework() {
-        return new Framework();
-    }
+//    @Bean
+//    public Framework framework() {
+//        return new Framework();
+//    }
 }
