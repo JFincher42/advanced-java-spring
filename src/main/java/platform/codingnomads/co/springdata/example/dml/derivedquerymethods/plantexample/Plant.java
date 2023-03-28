@@ -22,7 +22,8 @@ public class Plant {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, optional = false, fetch = FetchType.EAGER)
+//    @OneToOne(cascade = CascadeType.ALL, optional = false, fetch = FetchType.LAZY)
     private SoilType favoriteSoilType;
 
     private String sunType;

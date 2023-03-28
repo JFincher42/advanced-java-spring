@@ -1,8 +1,10 @@
 package platform.codingnomads.co.springdata.example.dml.derivedquerymethods.plantexample;
 
 import lombok.*;
+import platform.codingnomads.co.springdata.example.dml.derivedquerymethods.plantexample.Plant;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "soil_types")
@@ -26,4 +28,7 @@ public class SoilType {
 
     @Column(nullable = false)
     private boolean dry;
+
+    @OneToMany(mappedBy = "favoriteSoilType")
+    private List<Plant> plants;
 }
