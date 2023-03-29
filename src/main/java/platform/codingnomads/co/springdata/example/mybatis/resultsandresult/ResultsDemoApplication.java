@@ -13,6 +13,31 @@ public class ResultsDemoApplication {
     }
 
     @Bean
+    public CommandLineRunner loadMusicianData(MusicianMapper musicianMapper){
+        return (args) -> {
+            Musician musician1 = new Musician();
+            musician1.setName("Alex Lifeson");
+            musician1.setCurrentBand("Envy of None");
+
+            Musician musician2 = new Musician();
+            musician2.setName("Geddy Lee");
+
+            Musician musician3 = new Musician();
+            musician3.setName("Arjen Lucassen");
+            musician3.setCurrentBand("Supersonic Revolution");
+
+            musicianMapper.insertNewMusician(musician1);
+            musicianMapper.insertNewMusician(musician2);
+            musicianMapper.insertNewMusician(musician3);
+
+            musicianMapper.getAllMusicians().forEach(System.out::println);
+
+            System.out.println("ENVY OF NONE MUSICIANS");
+            musicianMapper.getMusiciansByCurrentBand("Envy of None").forEach(System.out::println);
+        };
+    }
+
+    @Bean
     public CommandLineRunner loadInitialData(SongMapper songMapper) {
         return (args) -> {
             //notice the setter names have changed to match Java naming conventions
@@ -31,8 +56,8 @@ public class ResultsDemoApplication {
             songMapper.insertNewSong(song1);
             songMapper.insertNewSong(song2);
 
-            Song song3 = songMapper.getSongById(1L);
-            System.out.println(song3.toString());
+//            Song song3 = songMapper.getSongById(1L);
+//            System.out.println(song3.toString());
         };
     }
 }
