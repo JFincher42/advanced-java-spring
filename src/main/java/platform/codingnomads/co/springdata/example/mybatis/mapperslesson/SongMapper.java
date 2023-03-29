@@ -33,6 +33,14 @@ public interface SongMapper {
             "WHERE artist_name = #{param1} AND album_name = #{param2};")
     ArrayList<Song> getSongsByAlbumAndArtist(String artistName, String albumName);
 
+    @Select("SELECT * from mybatis.songs " +
+            "WHERE album_name = #{albumName};")
+    ArrayList<Song> getSongsByAlbum(String albumName);
+
+    @Delete("DELETE from mybatis.songs " +
+            "WHERE album_name = #{albumName}")
+    int deleteSongsByAlbum(String albumName);
+
     @Select("SELECT *" +
             "FROM mybatis.songs " +
             "WHERE artist_name = #{param1};")
