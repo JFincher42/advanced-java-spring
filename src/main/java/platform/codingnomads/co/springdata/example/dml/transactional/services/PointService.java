@@ -9,6 +9,7 @@ import platform.codingnomads.co.springdata.example.dml.transactional.models.Poin
 import platform.codingnomads.co.springdata.example.dml.transactional.repositories.PointRepo;
 
 import java.io.IOException;
+import java.util.Random;
 
 @Service
 public class PointService {
@@ -34,7 +35,7 @@ public class PointService {
 
     @Transactional(propagation = Propagation.MANDATORY)
     public void foo() {
-        repo.getOne(1L);
+        repo.findFirstByid(1L);
     }
 
     //@Transactional II
@@ -63,12 +64,12 @@ public class PointService {
 
     @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
     public Point getPointById(Long id) {
-        return repo.getOne(id);
+        return repo.findFirstByid(id);
     }
 
     @Transactional(readOnly = true)
     public void noExceptionExpected() {
-        Point p = repo.getOne(1L);
+        Point p = repo.findFirstByid(1L);
 
         p.setX(5);
 
@@ -77,7 +78,7 @@ public class PointService {
 
     @Transactional(rollbackFor = {IOException.class, ArithmeticException.class})
     public void rollbackFor() throws IOException, ArithmeticException {
-        Point p = repo.getOne(1L);
+        Point p = repo.findFirstByid(1L);
         p.setX(100);
         p.setX(100);
         repo.save(p);
@@ -87,11 +88,24 @@ public class PointService {
 
     @Transactional(noRollbackFor = InterruptedException.class)
     public void noRollbackFor() throws InterruptedException{
-        Point p = repo.getOne(2L);
+        Point p = repo.findFirstByid(2L);
         p.setX(4);
         p.setX(20);
         repo.save(p);
         throw new InterruptedException();
         //changes still commit
+    }
+
+    @Transactional(timeout = 2)
+    public void possibleTimeout() throws InterruptedException
+    {
+        // Might time out, might not
+        Random rand = new Random();
+        int delay = (int)(rand.nextFloat() * 1000) + 500;
+        System.out.println("Delay is "+ delay);
+        Thread.sleep(delay);
+
+        Point p = new Point(20, 30);
+        repo.save(p);
     }
 }

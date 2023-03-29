@@ -23,16 +23,17 @@ public class TransactionalApplication implements CommandLineRunner {
 
         //@Transactional I
 
-        pointService.foo();
+//        pointService.foo();
 //        pointService.doSomeWork();
 
         //@Transactional II
 
 //        pointService.timeOutAfter5();
 //        pointService.triggerTimeout();
+        pointService.possibleTimeout();
 
-//        System.out.println(pointService.getPointById(1L).toString());
-//        pointService.noExceptionExpected();
+        System.out.println(pointService.getPointById(1L).toString());
+        pointService.noExceptionExpected();
 
         try {
             pointService.rollbackFor();
