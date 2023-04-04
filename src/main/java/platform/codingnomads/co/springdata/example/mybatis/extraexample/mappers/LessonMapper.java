@@ -17,14 +17,17 @@ public interface LessonMapper {
 
     @Select("SELECT id, name, text FROM mybatis.lessons WHERE id = #{param1};")
     @Results(id = "lessonResultMap",
-                value = @Result(
-                    column = "id",
-                    javaType = List.class,
-                    property = "imageArrayList",
-                    many = @Many(
-                            select = "platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.ImageMapper.getImagesByLessonId"
+            value = {
+                    @Result(property = "id", column = "id"),
+                    @Result(property = "name", column = "name"),
+                    @Result(property = "text", column = "text"),
+                    @Result(column = "id",
+                            javaType = List.class,
+                            property = "imageArrayList",
+                            many = @Many(
+                                    select = "platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.ImageMapper.getImagesByLessonId")
                     )
-            )
+            }
     )
     Lesson getLessonById(Long lessonId);
 

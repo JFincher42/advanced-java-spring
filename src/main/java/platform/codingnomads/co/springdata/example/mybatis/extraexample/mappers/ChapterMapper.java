@@ -15,30 +15,26 @@ public interface ChapterMapper {
 
     @Select("SELECT id, name FROM mybatis.chapters WHERE id = #{param1}")
     @Results(
-            @Result(
-                    column = "id",
-                    property = "lessons",
-                    javaType = List.class,
-                    many = @Many(
-                            select = "platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.LessonMapper.getLessonByChapterId",
-                            fetchType = FetchType.LAZY
-                    )
-            )
+            id = "chapterMapperResults",
+            value = {
+                    @Result(property = "id", column = "id"),
+                    @Result(property = "name", column = "name"),
+                    @Result(column = "id",
+                            property = "lessons",
+                            javaType = List.class,
+                            many = @Many(
+                                    select = "platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.LessonMapper.getLessonByChapterId",
+                                    fetchType = FetchType.LAZY))
+            }
     )
     Chapter getByChapterId(Long id);
 
+    @Select("SELECT * from mybatis.chapters where name = #{chapterName};")
+    @ResultMap("chapterMapperResults")
+    Chapter getChapterByName(String chapterName);
+
     @Select("SELECT id, name FROM mybatis.chapters WHERE section_id = #{param1};")
-    @Results(
-            @Result(
-                    column = "id",
-                    property = "lessons",
-                    javaType = List.class,
-                    many = @Many(
-                            select = "platform.codingnomads.co.springdata.example.mybatis.extraexample.mappers.LessonMapper.getLessonByChapterId",
-                            fetchType = FetchType.LAZY
-                    )
-            )
-    )
+    @ResultMap("chapterMapperResults")
     LinkedList<Chapter> getChaptersBySectionId(Long sectionId);
 
     @Delete("DELETE FROM mybatis.chapters WHERE id = #{param1};")
