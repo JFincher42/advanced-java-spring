@@ -13,17 +13,17 @@ public class Song {
 
     private String name;
 
-    private String albumName;
+    private Album album;
 
-    private Artist artist;
+//    private Artist artist;
 
     //song length in seconds
     private int songLength;
 
-    public Song(String name, String albumName, Artist artist, int songLength) {
+    public Song(String name, Album album, /*Artist artist,*/ int songLength) {
         this.name = name;
-        this.albumName = albumName;
-        this.artist = artist;
+        this.album = album;
+//        this.artist = artist;
         this.songLength = songLength;
     }
 }
