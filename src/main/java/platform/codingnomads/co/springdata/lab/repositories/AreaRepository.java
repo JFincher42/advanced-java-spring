@@ -5,4 +5,5 @@ import platform.codingnomads.co.springdata.lab.models.Area;
 
 public interface AreaRepository extends JpaRepository<Area,Long> {
 
+    Area findByCode(String code);
 }
